@@ -663,6 +663,7 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
         for i, v in next, list do
             local btn = game:GetObjects("rbxassetid://4531683854")[1];
             btn.Parent = bodyFrame;
+            self:Resize(self.bodyFrame);
             btn.Text = v;
             btn.ZIndex = 2;
 
