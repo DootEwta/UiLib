@@ -237,8 +237,8 @@ function OwlLib.Content:newBtn(title, callback, noToggle)
         self:initBtnEffect(btn);
 
         local toggle = {
-            [true] = fromRGB(Values.EnabledColor or Color3.new(0,255,0)),
-            [false] = fromRGB(Values.DisabledColor or Color3.new(0,0,255))
+            [true] = Values.EnabledColor or Color3.new(0,255,0),
+            [false] = Values.DisabledColor or Color3.new(0,0,255)
         };
 
         tweenService:Create(btn.statusFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = toggle[enabled]}):Play();
