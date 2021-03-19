@@ -1,6 +1,3 @@
--- owl hub ui lib 
--- forked and edited
-
 local OwlLib = {Content = {}};
 local config = {};
 
@@ -642,7 +639,7 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
 
     local oldSize;
     local btn = game:GetObjects("rbxassetid://4531687341")[1];
-    btn.Parent = self;
+    btn.Parent = self.bodyFrame;
     btn.titleLabel.Text = title;
     btn.titleLabel.Size = newUDim2(0, btn.titleLabel.TextBounds.X, 1, 0);
     btn.Size = newUDim2(0, btn.titleLabel.Size.X.Offset + 80, 0, 30);
