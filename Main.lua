@@ -642,7 +642,7 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
 
     local oldSize;
     local btn = game:GetObjects("rbxassetid://4531687341")[1];
-    btn.Parent = self.bodyFrame;
+    btn.Parent = self;
     btn.titleLabel.Text = title;
     btn.titleLabel.Size = newUDim2(0, btn.titleLabel.TextBounds.X, 1, 0);
     btn.Size = newUDim2(0, btn.titleLabel.Size.X.Offset + 80, 0, 30);
