@@ -663,7 +663,6 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
         for i, v in next, list do
             local btn = game:GetObjects("rbxassetid://4531683854")[1];
             btn.Parent = bodyFrame;
-            self:Resize(self.bodyFrame);
             btn.Text = v;
             btn.ZIndex = 2;
 
@@ -699,6 +698,7 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
     end
 
     refresh(list);
+    self:Resize(self.bodyFrame);
 
     local arrowTween = tweenService:Create(arrowLabel, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 0});
     local arrowTween1 = tweenService:Create(arrowLabel, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {Rotation = 180});
