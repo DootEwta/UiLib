@@ -20,7 +20,7 @@ script = popupGui.mainScript;
 local popup = loadstring(popupGui.mainScript.Source)();
 script = oldScript;
 
-local owlLibGui = game:GetObjects("rbxassetid://4530443679")[1];
+local owlLibGui = game:GetObjects("rbxassetid://6538069390")[1];
 owlLibGui.Parent = game:GetService("CoreGui");
 owlLibGui.Name = httpService:GenerateGUID(false);
 local mainFrame = owlLibGui.mainFrame;
@@ -225,7 +225,7 @@ function OwlLib.Content:newBtn(title, callback, noToggle)
         local enabled = config[title] and true or false;
         if enabled then
             callback(enabled);
-            popup:new("Enabled " .. title);
+            --popup:new("Enabled " .. title);
         end;
         
         local btn = game:GetObjects("rbxassetid://4531129509")[1];
@@ -237,7 +237,7 @@ function OwlLib.Content:newBtn(title, callback, noToggle)
         self:initBtnEffect(btn);
 
         local toggle = {
-            [true] = fromRGB(109, 89, 122),
+            [true] = fromRGB(130, 82, 161),
             [false] = fromRGB(45,45,45)
         };
 
@@ -250,7 +250,7 @@ function OwlLib.Content:newBtn(title, callback, noToggle)
             saveConfig();
             tweenService:Create(btn.statusFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = toggle[enabled]}):Play();
             callback(enabled);
-            popup:new((enabled and "Enabled " or "Disabled ") .. title);
+            --popup:new((enabled and "Enabled " or "Disabled ") .. title);
         end);
 
         return {
@@ -261,7 +261,7 @@ function OwlLib.Content:newBtn(title, callback, noToggle)
                     saveConfig();
                     tweenService:Create(btn.statusFrame, TweenInfo.new(0.25, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundColor3 = toggle[enabled]}):Play();
                     callback(enabled);
-                    popup:new((enabled and "Enabled " or "Disabled ") .. title);
+                    --popup:new((enabled and "Enabled " or "Disabled ") .. title);
                 end;
             end;
         };
@@ -277,13 +277,13 @@ function OwlLib.Content:newBtn(title, callback, noToggle)
         btn.MouseButton1Click:Connect(function()
             self:Ripple(btn);
             callback();
-            popup:new("Enabled " .. title);
+            --popup:new("Enabled " .. title);
         end);
 
         return {
             Fire = function(self) 
                 callback();
-                popup:new("Enabled " .. title);
+                --popup:new("Enabled " .. title);
             end;
         };
     end;
@@ -312,7 +312,7 @@ function OwlLib.Content:newSlider(title, callback, min, max, startPoint)
         local callbackValue = floor((startPoint / max) * (max - min) + min);
         callback(callbackValue);
         if config[title] then
-            popup:new("Set " .. title .. " to " .. tostring(callbackValue));
+            --popup:new("Set " .. title .. " to " .. tostring(callbackValue));
         end;
     end;
 
@@ -336,7 +336,7 @@ function OwlLib.Content:newSlider(title, callback, min, max, startPoint)
             dragging = false;
             config[title] = sliderIndicatorFrame.valueLabel.Text;
             saveConfig();
-            popup:new("Set " .. title .. " to " .. sliderIndicatorFrame.valueLabel.Text);
+            --popup:new("Set " .. title .. " to " .. sliderIndicatorFrame.valueLabel.Text);
 		end;
     end);
 
@@ -358,7 +358,7 @@ function OwlLib.Content:newTextbox(title, callback, presetText, noCallbackOnStar
 
     local presetText = (config[title] and config[title]) or (presetText and presetText or "");
     if config[title] then
-        popup:new("Set " .. title .. " to " .. config[title]);
+        --popup:new("Set " .. title .. " to " .. config[title]);
     end;
 
     btn.inputBox.Text = presetText;
@@ -371,7 +371,7 @@ function OwlLib.Content:newTextbox(title, callback, presetText, noCallbackOnStar
         config[title] = btn.inputBox.Text;
         saveConfig();
         callback(btn.inputBox.Text);
-        popup:new("Set " .. title .. " to " .. btn.inputBox.Text);
+        --popup:new("Set " .. title .. " to " .. btn.inputBox.Text);
     end);
 end;
 
@@ -392,7 +392,7 @@ function OwlLib.Content:newBind(title, callback, presetKeyCode)
 
     btn.bindBtn.Text = presetKeyCode and string.upper(tostring(string.char(presetKeyCode.Value))) or "KEY";
     if config[title] then
-        popup:new("Set " .. title .. " to " .. string.upper(tostring(string.char(presetKeyCode.Value))));
+        --popup:new("Set " .. title .. " to " .. string.upper(tostring(string.char(presetKeyCode.Value))));
     end;
 
     inputService.InputBegan:Connect(function(input, onGui)
@@ -406,7 +406,7 @@ function OwlLib.Content:newBind(title, callback, presetKeyCode)
                 saveConfig();
                 keyCode = input.KeyCode;
                 activated = true;
-                popup:new("Set " .. title .. " to " .. string.upper(tostring(string.char(input.KeyCode.Value))));
+                --popup:new("Set " .. title .. " to " .. string.upper(tostring(string.char(input.KeyCode.Value))));
             end);
 		elseif activated and not listening and input.KeyCode == keyCode then
             enabled = not enabled;
@@ -443,7 +443,7 @@ function OwlLib.Content:newCBind(title, callback, presetKeyCode)
         else
             presetKeyCode = Enum.UserInputType[config[title]];
         end;
-        popup:new("Set " .. title .. " to " .. (shortNames[presetKeyCode.Name] or presetKeyCode.Name));
+        --popup:new("Set " .. title .. " to " .. (shortNames[presetKeyCode.Name] or presetKeyCode.Name));
     end;
     local activated = presetKeyCode and true or false;
     local banned = {
@@ -507,7 +507,7 @@ function OwlLib.Content:newCBind(title, callback, presetKeyCode)
         local name = (input.UserInputType ~= Enum.UserInputType.Keyboard and (shortNames[input.UserInputType.Name] or input.UserInputType.Name) or input.KeyCode.Name);
         btn.bindBtn.Text = name
         activated = true;
-        popup:new("Set " .. title .. " to " .. (shortNames[input.UserInputType.Name] or input.UserInputType.Name));
+        --popup:new("Set " .. title .. " to " .. (shortNames[input.UserInputType.Name] or input.UserInputType.Name));
     end);
 end;
 
@@ -537,10 +537,10 @@ function OwlLib.Content:newColorPicker(title, callback, presetColor)
     if config[title] then
         if config[title]["R"] then
             presetColor = fromRGB(config[title]["R"], config[title]["G"], config[title]["B"]);
-            popup:new("Set " .. title .. " to " .. floor(config[title]["R"] * 255) .. " " .. floor(config[title]["G"] * 255) .. " " .. floor(config[title]["B"] * 255));
+            --popup:new("Set " .. title .. " to " .. floor(config[title]["R"] * 255) .. " " .. floor(config[title]["G"] * 255) .. " " .. floor(config[title]["B"] * 255));
         elseif config[title] == "Rainbow" then
             rainbow = true;
-            popup:new("Set " .. title .. " to rainbow");
+            ----popup:new("Set " .. title .. " to rainbow");
         end;
     end;
 
@@ -568,7 +568,7 @@ function OwlLib.Content:newColorPicker(title, callback, presetColor)
         config[title] = "Rainbow";
         saveConfig();
         rainbow = true;
-        popup:new("Set " .. title .. " to rainbow");
+        ----popup:new("Set " .. title .. " to rainbow");
     end);
     
     hueSatFrame.InputBegan:Connect(function(input)
@@ -582,7 +582,7 @@ function OwlLib.Content:newColorPicker(title, callback, presetColor)
             hueSatDragging = false;
             config[title] = {R = colorFrame.BackgroundColor3.R * 255, G = colorFrame.BackgroundColor3.G * 255, B = colorFrame.BackgroundColor3.B * 255};
             saveConfig();
-            popup:new("Set " .. title .. " to " .. floor(colorFrame.BackgroundColor3.R * 255) .. " " .. floor(colorFrame.BackgroundColor3.G * 255) .. " " .. floor(colorFrame.BackgroundColor3.B * 255));
+            ----popup:new("Set " .. title .. " to " .. floor(colorFrame.BackgroundColor3.R * 255) .. " " .. floor(colorFrame.BackgroundColor3.G * 255) .. " " .. floor(colorFrame.BackgroundColor3.B * 255));
         end;
     end);
 
@@ -597,7 +597,7 @@ function OwlLib.Content:newColorPicker(title, callback, presetColor)
             valueDragging = false;
             config[title] = {R = colorFrame.BackgroundColor3.R * 255, G = colorFrame.BackgroundColor3.G * 255, B = colorFrame.BackgroundColor3.B * 255};
             saveConfig();
-            popup:new("Set " .. title .. " to " .. floor(colorFrame.BackgroundColor3.R) .. " " .. floor(colorFrame.BackgroundColor3.G) .. " " .. floor(colorFrame.BackgroundColor3.B));
+            ----popup:new("Set " .. title .. " to " .. floor(colorFrame.BackgroundColor3.R) .. " " .. floor(colorFrame.BackgroundColor3.G) .. " " .. floor(colorFrame.BackgroundColor3.B));
         end;
     end);
 
@@ -647,7 +647,7 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
     if not noCallbackOnStart then
         callback(config[title] and config[title] or list[1]);
         if config[title] then
-            popup:new("Set " .. title .. " to " .. config[title]);
+            ----popup:new("Set " .. title .. " to " .. config[title]);
         end;
     end;
 
@@ -687,7 +687,7 @@ function OwlLib.Content:newDropdown(title, callback, list, noCallbackOnStart)
                 config[title] = v;
                 saveConfig();
                 callback(v);
-                popup:new("Set " .. title .. " to " .. v);
+                ----popup:new("Set " .. title .. " to " .. v);
                 arrowTween:Play();
                 bodyFrame:TweenSize(newUDim2(0, 170, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.2, true);
                 wait(0.15);
