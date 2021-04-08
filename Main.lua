@@ -170,7 +170,7 @@ end;
 function OwlLib:new(title)
     local self = setmetatable({}, {__index = self.Content});
 
-    self.bodyFrame = game:GetObjects("rbxassetid://4531111462")[1];
+    self.bodyFrame = game:GetObjects("rbxassetid://6653258099")[1];
     self.bodyFrame.Parent = mainFrame;
     self.bodyFrame.Name = title .. "BodyFrame";
     self.bodyFrame.Visible = false;
