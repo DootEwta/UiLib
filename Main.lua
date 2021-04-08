@@ -100,10 +100,10 @@ mainFrame.topBarFrame.miniBtn.InputEnded:Connect(function(input)
 end);
 
 mainFrame.topBarFrame.miniBtn.MouseButton1Click:Connect(function()
-    if mainFrame.Size ~= newUDim2(0, 387, 0, 27) then
-        mainFrame:TweenSize(newUDim2(0, 387, 0, 27), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.25, true);
+    if mainFrame.Size ~= newUDim2(0, 500, 0, 27) then
+        mainFrame:TweenSize(newUDim2(0, 500, 0, 27), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.25, true);
     else
-        mainFrame:TweenSize(newUDim2(0, 387, 0, 225), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.25, true);
+        mainFrame:TweenSize(newUDim2(0, 500, 0, 400), Enum.EasingDirection.Out, Enum.EasingStyle.Quad, 0.25, true);
     end;
 end);
 
