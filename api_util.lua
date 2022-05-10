@@ -126,7 +126,7 @@ util.aobscan = function(aob)
     local new_results = {};
 
     for i = 0,results.Count - 1 do
-        print(i,results.Count)
+        print(i)
         if not results[i] then
             print("i doesnt exist skipping")
         else
