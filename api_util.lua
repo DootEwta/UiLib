@@ -125,14 +125,13 @@ util.aobscan = function(aob)
     local results = AOBScan(aob, "-C-W", 0, "")
     local new_results = {};
 
-    for i = 0,results.Count - 1 do
-        print(i)
+    --[[for i = 0,results.Count - 1 do
         if not results[i] then
             print("i doesnt exist skipping")
         else
             table.insert(new_results, getAddress(results[i]));
         end
-    end
+    end]]
 
     return new_results;
 end
