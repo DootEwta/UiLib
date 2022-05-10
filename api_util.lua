@@ -128,9 +128,9 @@ util.aobscan = function(aob)
     for i = 0,results.Count - 1 do
         if not results[i] then
             print("i doesnt exist skipping")
-            continue
+        else
+            table.insert(new_results, getAddress(results[i]));
         end
-        table.insert(new_results, getAddress(results[i]));
     end
 
     return new_results;
